@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_diary/diary_entry_model.dart';
-import 'package:flutter_web_diary/diary_entry_page.dart';
+import 'package:flutter_web_diary/product_entry_model.dart';
+import 'package:flutter_web_diary/product_entry_page.dart';
 
 class PopUpMenu extends StatelessWidget {
   const PopUpMenu({
@@ -23,18 +23,21 @@ class PopUpMenu extends StatelessWidget {
             value: Action.edit,
             child: Text('Edit'),
           ),
+          PopupMenuItem(
+            child: Text('Active'),
+          ),
         ];
       },
       onSelected: (action) {
         switch (action) {
           case Action.delete:
             _showDeleteDialog(context, onDelete: () {
-              // TODO: Answer 5 to delete a document
               Firestore.instance
-                  .collection('diaries')
+                  .collection('products')
                   .document(diaryEntry.documentId)
                   .delete();
-              Navigator.of(context).pop();
+              // Navigator.of(context).pop();
+              Navigator.of(context, rootNavigator: true).pop();
             });
             break;
           case Action.edit:
@@ -46,7 +49,7 @@ class PopUpMenu extends StatelessWidget {
                   );
                 },
               ),
-            );
+            );       
             break;
 
           default:
@@ -63,7 +66,7 @@ void _showDeleteDialog(BuildContext context, {Function onDelete}) {
     context: context,
     child: AlertDialog(
       title: Text('Are you sure you want to delete?'),
-      content: Text('Deleted diary entries are permanent and not retrievable.'),
+      content: Text('Deleted entries are permanent and not retrievable.'),
       actions: <Widget>[
         FlatButton(
           color: Colors.redAccent,

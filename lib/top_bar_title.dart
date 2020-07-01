@@ -11,7 +11,7 @@ class TopBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
+      height: 60,
       margin: EdgeInsets.only(left: 40),
       child: Row(
         children: <Widget>[

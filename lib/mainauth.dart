@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'auth.dart';
 import 'package:flutter_web_diary/bottom_nav.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -46,9 +45,7 @@ class UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
       Container(padding: EdgeInsets.all(20), child: Text(_profile.toString())),
-      Container(
-          padding: EdgeInsets.all(20),
-          child: Text('Loading: ${_loading.toString()}')),
+      Container(padding:EdgeInsets.all(20), child: Text('Loading: ${_loading.toString()}')),
     ]);
   }
 }
@@ -60,9 +57,8 @@ class LoginButton extends StatelessWidget {
         stream: authService.user,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MainApp()),
+            return Container(
+              child:MainApp()
             );
           } else {
             return MaterialButton(
@@ -75,4 +71,3 @@ class LoginButton extends StatelessWidget {
         });
   }
 }
-  

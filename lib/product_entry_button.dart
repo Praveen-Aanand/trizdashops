@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_diary/diary_entry_model.dart';
-import 'package:flutter_web_diary/diary_entry_page.dart';
+import 'package:flutter_web_diary/product_entry_model.dart';
+import 'package:flutter_web_diary/product_entry_page.dart';
 
 class DiaryEntryButton extends StatelessWidget {
   const DiaryEntryButton({
@@ -31,13 +31,11 @@ class DiaryEntryButton extends StatelessWidget {
         ).toMap();
 
         if (isAddAction) {
-          // TODO: 1. Answer to add firestore document
-          Firestore.instance.collection('diaries').add(data);
+          Firestore.instance.collection('products').add(data);
         } else if (widget.diaryAction == DiaryAction.edit) {
-          // TODO: 4. Answer to update firestore document
           final documentId = widget.diaryEntry.documentId;
           Firestore.instance
-              .collection('diaries')
+              .collection('products')
               .document(documentId)
               .updateData(data);
         }

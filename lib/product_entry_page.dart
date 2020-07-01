@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_diary/diary_entry_button.dart';
-import 'package:flutter_web_diary/diary_entry_model.dart';
+import 'package:flutter_web_diary/product_entry_button.dart';
+import 'package:flutter_web_diary/product_entry_model.dart';
 import 'package:flutter_web_diary/emoji_helpers.dart';
 
 class DiaryEntryPage extends StatefulWidget {
@@ -67,22 +67,30 @@ class _DiaryEntryPageState extends State<DiaryEntryPage> {
                   PopupMenuButton(
                     itemBuilder: (context) {
                       return [
-                        PopupMenuItem(
-                          child: Text('😄 Happy'),
-                          value: Emoji.happy,
+                       PopupMenuItem(
+                          child: Text('💡 electronics'),
+                          value: Emoji.electronics,
                         ),
                         PopupMenuItem(
-                          child: Text('😭 Sad'),
-                          value: Emoji.sad,
-                        ),
-                        PopupMenuItem(
-                          child: Text('😡 Angry'),
-                          value: Emoji.angry,
+                          child: Text('👶🏽 baby care'),
+                          value: Emoji.babycare,
+                        ),PopupMenuItem(
+                          child: Text('📺 home appliances'),
+                          value: Emoji.homeappliances,
+                        ),PopupMenuItem(
+                          child: Text('👗 fasion'),
+                          value: Emoji.fasion,
+                        ),PopupMenuItem(
+                          child: Text('🍎 fruits'),
+                          value: Emoji.fruits,
+                        ),PopupMenuItem(
+                          child: Text('🥕 vegitables'),
+                          value: Emoji.vegitables,
                         ),
                       ];
                     },
                     child: _emoji.isEmpty
-                        ? Text('Add Emoji')
+                        ? Text('category')
                         : Text(
                             _emoji,
                             style: TextStyle(
@@ -105,7 +113,7 @@ class _DiaryEntryPageState extends State<DiaryEntryPage> {
                       .copyWith(color: Colors.black87),
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    labelText: isReadOnly ? '' : 'Title',
+                    labelText: isReadOnly ? '' : 'Name',
                   ),
                 ),
                 // Body text
@@ -118,7 +126,7 @@ class _DiaryEntryPageState extends State<DiaryEntryPage> {
                       .headline6
                       .copyWith(color: Colors.black87, height: 1.7),
                   decoration: InputDecoration.collapsed(
-                    hintText: 'Tell your diary what happened',
+                    hintText: 'discription',
                     border: InputBorder.none,
                     hintStyle: Theme.of(context)
                         .textTheme
