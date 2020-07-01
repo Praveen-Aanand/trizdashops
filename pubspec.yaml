@@ -1,5 +1,5 @@
 name: flutter_web_diary
-description: A new Flutter project.
+description: smiple fast secure.
 
 version: 1.0.0+1
 
@@ -12,6 +12,7 @@ dependencies:
   firebase_core: ^0.4.0+9  
   provider: ^4.0.4
   cloud_firestore: ^0.13.4
+  slimy_card: ^1.0.4
 
   cupertino_icons: ^0.1.2
 

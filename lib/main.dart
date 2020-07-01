@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:slimy_card/slimy_card.dart';
 import 'package:flutter_web_diary/diary_card.dart';
 import 'package:flutter_web_diary/diary_entry_model.dart';
 import 'package:flutter_web_diary/top_bar_title.dart';
 import 'package:provider/provider.dart';
-
 import 'diary_entry_page.dart';
 
 void main() => runApp(MyApp());
@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         title: 'My Diary',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          accentColor: Colors.pink,
+          primarySwatch: Colors.orange,
+          accentColor: Colors.yellow[800],
         ),
         initialRoute: '/',
         routes: {
@@ -52,17 +52,31 @@ class _MyHomePageState extends State<MyHomePage> {
     final diaryEntries = Provider.of<List<DiaryEntry>>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orange[800],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(94.0),
-          child: TopBarTitle('Diary Entries'),
+          preferredSize: Size.fromHeight(30.0),
+          child: TopBarTitle('Trizda Stores'),
         ),
         elevation: 0,
       ),
       body: Center(
         child: SizedBox(
-          width: MediaQuery.of(context).size.width * 3 / 5,
+          // width: MediaQuery.of(context).size.width * 3 / 5,
           child: ListView(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SlimyCard(
+                  color: Colors.black,
+                  width: 400,
+                  topCardHeight: 100,
+                  bottomCardHeight: 200,
+                  borderRadius: 15,
+                  topCardWidget: topCardWidget(),
+                  bottomCardWidget:Text("hello",style: TextStyle(color:Colors.white),),
+                  slimeEnabled: true,
+                ),
+              ),
               SizedBox(height: 40),
               if (diaryEntries != null)
                 for (var diaryData in diaryEntries)
@@ -81,10 +95,45 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
         backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
-      
     );
   }
 }
 
-var diaryEntry =
-    'People just dont understand how I am built and reason. There is so much that I want to explain. However, I cannot do that as I have the disability of talking cock. Someday they will understand that talking cock is great';
+Widget topCardWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          height: 70,
+          width: 70,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(image: AssetImage()),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 20,
+                spreadRadius: 1,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 15),
+        Text(
+          'The Rock',
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        SizedBox(height: 15),
+        Text(
+          'He asks, what your name is. But!',
+          style: TextStyle(
+              color: Colors.white.withOpacity(0.8),
+              fontSize: 12,
+              fontWeight: FontWeight.w500),
+        ),
+        SizedBox(height: 10),
+      ],
+    );
+  }
+
